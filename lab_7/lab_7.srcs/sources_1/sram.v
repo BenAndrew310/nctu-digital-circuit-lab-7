@@ -42,7 +42,7 @@ reg [DATA_WIDTH-1 : 0] RAM [RAM_SIZE - 1:0];
 // ------------------------------------
 // Initialize the sram cells with the values defined in "image.dat."
 initial begin
-    $readmemh("matrices.mem", RAM);
+    $readmemh("test.mem", RAM);
 end
 
 // ------------------------------------

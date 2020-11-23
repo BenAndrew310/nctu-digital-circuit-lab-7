@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="92ef154b9d0948dda2c1bb8501f2fe7b"/>
@@ -102,6 +102,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/matrices.mem">
+        <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/test.mem">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>

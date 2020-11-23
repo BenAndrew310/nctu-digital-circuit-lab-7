@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.runs/impl_1/lab6.tcl"
+  variable script "C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.runs/impl_1/lab6.tcl"
   variable category "vivado_impl"
 }
 
@@ -130,15 +130,15 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.cache/wt [current_project]
-  set_property parent.project_path C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.xpr [current_project]
-  set_property ip_output_repo C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.cache/wt [current_project]
+  set_property parent.project_path C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.xpr [current_project]
+  set_property ip_output_repo C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.runs/synth_1/lab6.dcp
+  add_files -quiet C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.runs/synth_1/lab6.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/Shlab24/Desktop/lab_7_const_update/lab_7/lab_7.srcs/constrs_1/lab7.xdc
+  read_xdc C:/Users/Shlab24/Desktop/nctu-digital-circuit-lab-7/lab_7/lab_7.srcs/constrs_1/lab7.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

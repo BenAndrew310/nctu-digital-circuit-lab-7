@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Sat Nov 21 23:51:11 2020
+| Date         : Mon Nov 23 21:12:31 2020
 | Host         : DESKTOP-39FN3EH running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file lab6_control_sets_placed.rpt
 | Design       : lab6
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    10 |
-|    Minimum number of control sets                        |    10 |
+| Total control sets                                       |    72 |
+|    Minimum number of control sets                        |    72 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    30 |
+| Unused register locations in slices containing registers |   193 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    10 |
-| >= 0 to < 4        |     0 |
+| Total control sets |    72 |
+| >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     0 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |    34 |
+| >= 10 to < 12      |     4 |
 | >= 12 to < 14      |     1 |
-| >= 14 to < 16      |     0 |
-| >= 16              |     5 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    28 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | No                     |              19 |            9 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              51 |           16 |
-| Yes          | No                    | No                     |               8 |            3 |
+| No           | Yes                   | No                     |              44 |           20 |
+| Yes          | No                    | No                     |             869 |          400 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             111 |           31 |
+| Yes          | Yes                   | No                     |             779 |          193 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,16 +73,78 @@ Table of Contents
 +----------------+------------------------------+----------------------------+------------------+----------------+--------------+
 |  Clock Signal  |         Enable Signal        |      Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+------------------------------+----------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | lcd0/icode                   |                            |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG | lcd0/tcode[3]_i_1_n_0        |                            |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG |                              | lcd0/SR[0]                 |                4 |              7 |         1.75 |
-|  clk_IBUF_BUFG | lcd0/lcd_initialized_reg_n_0 | lcd0/SR[0]                 |                2 |              7 |         3.50 |
-|  clk_IBUF_BUFG | btn_db1/sel                  | lcd0/SR[0]                 |                3 |             12 |         4.00 |
-|  clk_IBUF_BUFG |                              | btn_db0/counter[0]_i_1_n_0 |                6 |             22 |         3.67 |
+|  clk_IBUF_BUFG | uart/tx_out_i_1_n_0          |                            |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | lcd0/tcode[3]_i_1_n_0        |                            |                4 |              4 |         1.00 |
+|  clk_IBUF_BUFG | lcd0/icode[3]_i_1_n_0        |                            |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | lcd0/lcd_initialized_reg_n_0 | lcd0/reset_n               |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | mtx1[1][7]_i_1_n_0           |                            |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | mtx2[9][7]_i_1_n_0           |                            |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | row_A[123]_i_1_n_0           |                            |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG | mtx1[13][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx1[12][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx1[14][7]_i_1_n_0          |                            |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | mtx1[5][7]_i_1_n_0           |                            |                8 |              8 |         1.00 |
+|  clk_IBUF_BUFG | mtx1[6][7]_i_1_n_0           |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx1[9][7]_i_1_n_0           |                            |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | mtx1                         |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx1[10][7]_i_1_n_0          |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx1[15][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx1[11][7]_i_1_n_0          |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx1[2][7]_i_1_n_0           |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx1[4][7]_i_1_n_0           |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx1[3][7]_i_1_n_0           |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx1[7][7]_i_1_n_0           |                            |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | mtx1[8][7]_i_1_n_0           |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx2[11][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx2[12][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx2[13][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx2[14][7]_i_1_n_0          |                            |                8 |              8 |         1.00 |
+|  clk_IBUF_BUFG | mtx2[15][7]_i_1_n_0          |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx2[1][7]_i_1_n_0           |                            |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG | mtx2                         |                            |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG | mtx2[10][7]_i_1_n_0          |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx2[3][7]_i_1_n_0           |                            |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG | mtx2[4][7]_i_1_n_0           |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx2[5][7]_i_1_n_0           |                            |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | mtx2[2][7]_i_1_n_0           |                            |                8 |              8 |         1.00 |
+|  clk_IBUF_BUFG | mtx2[6][7]_i_1_n_0           |                            |                7 |              8 |         1.14 |
+|  clk_IBUF_BUFG | mtx2[7][7]_i_1_n_0           |                            |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | mtx2[8][7]_i_1_n_0           |                            |                8 |              8 |         1.00 |
+|  clk_IBUF_BUFG | row_B[115]_i_1_n_0           |                            |                3 |              9 |         3.00 |
+|  clk_IBUF_BUFG | user_addr[0]_i_1_n_0         | lcd0/reset_n               |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG |                              | lcd0/reset_n               |                9 |             11 |         1.22 |
+|  clk_IBUF_BUFG | uart/tx_bits_remaining       |                            |                4 |             11 |         2.75 |
+|  clk_IBUF_BUFG |                              | send_counter[7]_i_1_n_0    |                5 |             11 |         2.20 |
+|  clk_IBUF_BUFG | row_B[115]_i_1_n_0           | row_B[81]_i_1_n_0          |                3 |             13 |         4.33 |
+|  clk_IBUF_BUFG | row_B[115]_i_1_n_0           | row_B[80]_i_1_n_0          |                4 |             14 |         3.50 |
+|  clk_IBUF_BUFG | pipe2[1][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe1                        |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe4[1][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe4[2][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe4[3][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe4                        |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe1[1][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe1[2][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe1[3][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe2                        |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe2[2][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe2[3][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe3                        |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe3[1][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe3[2][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | pipe3[3][17]_i_1_n_0         |                            |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG |                              |                            |                9 |             19 |         2.11 |
 |  clk_IBUF_BUFG |                              | btn_db1/clear              |                6 |             22 |         3.67 |
 |  clk_IBUF_BUFG | lcd0/lcd_initialized_reg_n_0 | lcd0/text_count[0]_i_1_n_0 |                7 |             25 |         3.57 |
-|  clk_IBUF_BUFG | lcd0/init_e_i_1_n_0          | lcd0/SR[0]                 |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | FSM_onehot_P_reg_n_0_[2]     | lcd0/SR[0]                 |               10 |             35 |         3.50 |
+|  clk_IBUF_BUFG | lcd0/init_e_i_2_n_0          | lcd0/reset_n               |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | idx2                         | lcd0/reset_n               |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | idx1                         | lcd0/reset_n               |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | pipe3_ready                  | lcd0/reset_n               |                9 |             33 |         3.67 |
+|  clk_IBUF_BUFG | pipe4_ready                  | lcd0/reset_n               |                9 |             33 |         3.67 |
+|  clk_IBUF_BUFG | pipe1_ready                  | lcd0/reset_n               |                9 |             33 |         3.67 |
+|  clk_IBUF_BUFG | pipe2_ready                  | lcd0/reset_n               |                9 |             33 |         3.67 |
+|  clk_IBUF_BUFG | mtx3[0][17]_i_1_n_0          |                            |              110 |            288 |         2.62 |
+|  clk_IBUF_BUFG | uart/P_reg[1]                | lcd0/reset_n               |              112 |            482 |         4.30 |
 +----------------+------------------------------+----------------------------+------------------+----------------+--------------+
 
 
